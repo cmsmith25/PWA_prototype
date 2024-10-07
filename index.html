@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA,Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Comics On The Go</title>
+    <link rel="stylesheet" href="/css/materialize.min.css"/>
+    <link rel="stylesheet" href="style.css">
+    
+    <!--Import Google Icon Font-->
+  
+    <script src="comic.js"></script>
+
+  
+<body class="blue">
+    <header>
+       
+        <h2>Comics on the Go!</h2>
+    </header>
+        <!--Nav bar for bigger screens-->
+    
+        <nav class="z-depth-0 red">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="#" data-target="mobile-nav" class="sidenav-trigger">Menu</a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="newcoms.html">New Comics Available</a></li>
+                        <li><a href="library.html">My Comic Library</a></li>
+                        <li><a href="suggest.html">Based on my Reading</a></li>
+                    </ul>
+                    <ul class="sidenav" id="mobile-nav">
+                        <li><a href="#!">Home</a></li>
+                        <li><a href="#!">New Comics Available</a></li>
+                        <li><a href="#!">My Comic Library</a></li>
+                        <li><a href="#!">Based on my Reading</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+    
+
+
+<div class="row">
+    <div class="col s12 m4">
+          <div class="card white" style="width:300px;">
+            <h4>Avengers</h4>
+            <img src="imgs/avengers.jpg" alt="Avengers Comic" class="responsive-img materialboxed"  data-caption="Avengers">
+            <button onclick="btn1()"> Find Comics</button>
+
+           </div>
+       </div>
+
+    <div class="col s12 m4">
+        <div class="card white" style="width:300px;">
+            <h4>Spiderman</h4>
+            <img src="imgs/spiderman.jpg" alt="Spiderman Comic" class="responsive-img materialboxed" data-caption="Spiderman">
+            <button onclick="btn2()"> Find Comics</button>
+
+            </div>
+         </div>
+         
+    <div class="col s12 m4">
+        <div class="card white" style="width:300px;">
+            <h4>Dr. Strange</h4>
+            <img src="imgs/strange.jpg" alt="Dr. Strange Comic" class="responsive-img materialboxed" data-caption="Dr. Strange">
+            <button onclick="btn3()"> Find Comics</button>
+            </div>
+        </div>
+</div>
+<div class="row">
+    <div class="col s12 m4">
+        <div class="card white" style="width:300px;">
+              <h4>Batman</h4>
+              <img src="imgs/batman.jpg" alt="Batman Comic" class="responsive-img materialboxed"  data-caption="Batman">
+              <button onclick="btn4()"> Find Comics</button>
+  
+            </div>
+        </div>
+    
+    <div class="col s12 m4">
+        <div class="card white" style="width:300px;">
+                <h4>Captain Marvel</h4>
+                <img src="imgs/captain.jpg" alt="Captain Marvel Comic" class="responsive-img materialboxed" data-caption="Captain Marvel">
+                <button onclick="btn5()"> Find Comics</button>
+  
+            </div>
+        </div>
+           
+    <div class="col s12 m4">
+        <div class="card white" style="width:300px;">
+                <h4>Ironman</h4>
+                <img src="imgs/ironman.jpg" alt="Ironman Comic" class="responsive-img materialboxed" data-caption="Ironman">
+                <button onclick="btn6()"> Find Comics</button>
+            </div>
+        </div>
+
+</div>
+
+
+   <script src="/js/materialize.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize/min.js"></script>
+   <script>
+    const sidenav = document.querySelectorAll('.sidenav');
+    M.sidenav.init(sidenav);
+   </script>
+    
+</body>
+</html>

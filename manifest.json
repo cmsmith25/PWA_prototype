@@ -1,0 +1,14 @@
+{
+    "name": "Comics on the Go",
+    "short_name": "ComicGo",
+    "description": "Library for your favorite comics",
+    "start_url": "/index.html",
+    "scope" : "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "background-color": "blue",
+    "theme-color": "red",
+    "dir": "ltr",
+    "lang": "en-US"
+    
+}

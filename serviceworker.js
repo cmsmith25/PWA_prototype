@@ -1,4 +1,4 @@
-const CACHE_NAME = "task-manager";
+const CACHE_NAME = "task-manager-v1";
 
 
 const ASSETS_TO_CACHE = [
@@ -14,7 +14,7 @@ const ASSETS_TO_CACHE = [
     "/pages/suggest.html",
     "/css/materialize.min.css",
     "/js/materialize.min.js",
-    "/js/ui.js",
+    "/js/comic.js",
     "/img/avengers.jpg",
     "/img/batman.jpg",
     "/img/captain.jpg",
@@ -30,9 +30,9 @@ const ASSETS_TO_CACHE = [
 ];
 
 
-self.addEventListener("install", (Event) => {
+self.addEventListener("install", (event) => {
     console.log("Service Worker: Installing...");
-    Event.waitUntil(
+    event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
             console.log("Service worker: caching files");
             return cache.addAll(ASSETS_TO_CACHE);

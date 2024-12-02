@@ -10,44 +10,80 @@ import {
   doc,
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
-  // Add a task
+  // Add a new comic
   export async function addTaskToFirebase(task) {
   try{
-  const docRef = await addDoc(collection(db, "tasks"), task);
-  return {id: docRef.id, ...task}
-  }     catch(error) {
-        console.error("error adding task: ", error)
+    if (!currentUser) {
+      throw new Error("User is not authenticated");
+    }
+    const userId = currentUser.uid;
+    console.log("userID : " , userId);
+    const userRef = doc(db, "users", userId);
+    await setDoc(
+      userRef,
+    {
+      email: currentUser.email,
+      name: currentUser.displayName,
+    },
+    { merge: true }
+    );
+  const tasksRef = collection(userRef, "tasks");
+  const docRef = await addDoc(tasksRef, task);
+  return { id: docRef.id, ...task};
+  } catch (error) {
+    console.error("Error adding comic: ", error);
   }
   }
-  // Get tasks
-  export async function getComics(params){
-    const comics = [];
+
+
+  // Get a new comic
+  export async function getTasksFromFirebase(){
+    const tasks = [];
     try{
-  const querySnapshot = await getDocs(collection(db, "comics"));
-  querySnapshot.forEach((doc) => {
-        addTaskToFirebase.push({ id: doc.id, ...doc.data{} });
+      if (!currentUser) {
+        throw new Error("User is not authenticated");
+      }
+      const userId = currentUser.uid;
+      const taskRef = collection(doc(db, "users", userId), "tasks");
+      const querySnapshot = await getDocs(taskRef);
+      querySnapshot.forEach((doc) => {
+        tasks.push({ id: doc.id, ...doc.data() });
     });
   } catch (error) {
-    console.error("error retrieving comics: ", error);
+    console.error("Error retrieving comics: ", error);
   }
-  return comics;
+  return tasks;
   }
-  // Delete task
-  export async function deleteComic(id){
-    try{
-        await deleteDoc{doc(db, "comics", id)};
+
+
+  // Delete a comic from library
+  export async function deleteTaskFromFirebase(id) {
+    try {
+      if (!currentUser) {
+        throw new Error("User is not authenticated");
+      }
+        const userId = currentUser.uid;
+        await deleteDoc(doc(db, "users", userId, "tasks", id));
     }   catch (error) {
-        console.error("error deleting tasks: ", error);
+        console.error("error deleting comic: ", error);
 
     }
   }
-  // Update task
-  export async function updateComic(id, updatedData) {
+
+
+  // Update comic library
+  export async function updateTaskInFirebase(id, updatedData) {
+    console.log(updatedData, id);
     try{
-        const comicRef = doc(db, "comics", id);
-        await updateDoc(comicRef, updatedData);
+      if (!currentUser) {
+        throw new Error("User is not authenticated");
+      }
+        const userId = currentUser.uid;
+        const taskRef = doc(db, "users", userId, "tasks", id);
+        console.log(taskRef);
+        await updateDoc(taskRef, updatedData);
     }   catch (error) {
-        console.error("error updating comic: ", error);
+        console.error("Error updating comic: ", error);
     }
   }
   

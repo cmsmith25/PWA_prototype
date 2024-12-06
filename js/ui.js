@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
   M.Sidenav.init(forms, { edge: "left" });
   checkStorageUsage();
   requestPersistentStorage();
-  // Add event listener for the "Enable Notifications" button
+  // Adds event listener for the "Enable Notifications" button
   const notificationButton = document.getElementById(
     "enable-notifications-btn"
   );
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Register Service Worker
+// This will register Service Worker
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
     .register("/serviceworker.js")

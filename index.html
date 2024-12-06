@@ -4,48 +4,121 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA,Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Comics On The Go</title>
     <link rel="stylesheet" href="/css/materialize.min.css"/>
     <link rel="manifest" href="manifest.json" />
 
-    <link rel="stylesheet" href="style.css">
-    
     <!--Import Google Icon Font-->
+    
+    <link 
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet"
+        />
   
     <script src="comic.js"></script>
+    </head>
 
   
 <body class="blue">
     <header>
-       
-        <h2>Comics on the Go!</h2>
-    </header>
-        <!--Nav bar for bigger screens-->
+       <!--Nav bar for bigger screens-->
+        
     
-        <nav class="z-depth-0 red">
-            <div class="container">
-                <div class="nav-wrapper">
-                    <a href="#" data-target="mobile-nav" class="sidenav-trigger">Menu</a>
-                    <ul class="right hide-on-med-and-down">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="newcoms.html">New Comics Available</a></li>
-                        <li><a href="library.html">My Comic Library</a></li>
-                        <li><a href="suggest.html">Based on my Reading</a></li>
-                    </ul>
-                    <ul class="sidenav" id="mobile-nav">
-                        <li><a href="#!">Home</a></li>
-                        <li><a href="#!">New Comics Available</a></li>
-                        <li><a href="#!">My Comic Library</a></li>
-                        <li><a href="#!">Based on my Reading</a></li>
+        <nav class="z-depth-0 red darken-4">
+            <div class="nav-wrapper container">
+                <a
+                    href="/"
+                    aria-label="Comics on the Go!"
+                    class="brand-logo white-text"
+                    >
+                        Comics on <span> the Go!</span>
+                    </a>
+                    <!--Hamburger Menu for medium and small screens-->
+                    <a 
+                    href="#"
+                    data-target="mobile-menu" 
+                    class="sidenav-trigger right hide-on-med-and-up black-text"
+                    aria-label="Open side menu"
+                    >
+                        <i class="material-icons">menu</i>
+                    </a>
+
+                    <!--Navbar Links for large screens-->
+                    <ul class="right hide-on-small-and-down" id="nav-links">
+
+                        <li>
+                            <a href="/" class="waves-effect grey-text text-darken-3">Home</a>
+                        </li>
+                        <li>
+                            <a
+                            href="/pages/newcoms.html"
+                            class="waves-effect grey-text text-darken-3"
+                            >New Comics</a>
+                        </li>
+                        <li>
+                            <a
+                            href="pages/library.html"
+                            class="waves-effect grey-text text-darken-3"
+                            >My Library</a>
+                        </li>
+                        <li>
+                            <a
+                            href="pages/suggest.html"
+                            class="waves-effect grey-text text-darken-3"
+                            >Suggested Comics</a>
+                        </li>
+                        <li>
+                            <a
+                            href="#"
+                            id="logout-btn"
+                            class="waves-effect grey-text text-darken-3"
+                            style="display: none"
+                            >Logout</a>
+                        </li>
+                        <li>
+                            <a
+                            href="/pages/profile.html"
+                            class="waves-effect grey-text text-darken-3"
+                            >
+                            <i class="material-icons">person</i></a>
+                        </li>
                     </ul>
                 </div>
-            </div>
-        </nav>
+             </nav>
+        </header>
+
+        <aside>
+            <!--Sidenav for small and medium screens-->
+            <ul class="sidenav" id="mobile-menu">
+                <li><a class="subheader">Comic Library</a></li>
+                <li>
+                    <a
+                    href="/pages/newcoms.html"
+                    class="waves-effect grey-text text-darken-3"
+                    >New Comics</a>
+                </li>
+                <li><div class="divider"></div></li>
+                <li>
+                    <a
+                    href="/pages/library.html"
+                    class="waves-effect grey-text text-darken-3"
+                    >
+                    <i class="material-icons">mail_outline</i>Contact</a>
+                </li>
+                <li>
+                    <a href="#" class="waves-effect grey-text text-darken-3">Logout</a>
+                </li>
+            </ul>
+        </aside>
 
 
+        <main>
+            <button
+                onclick="initNotificationPermission()"
+                class="btn red darken-3">Enable Notifications</button>
+        </main>
     
-
+<!--Comics-->
 
 <div class="row">
     <div class="col s12 m4">
@@ -101,17 +174,81 @@
             </div>
         </div>
 
+        <div class="center">
+            <button
+            class="btn-floating btn-large red darken-3 sidenav-trigger"
+            data-target="side-form"
+            aria-label="Add comic to wishlist">
+            <i class="material-icons">add</i>
+        </button>
+    </div>
+
+    <!--Comic Form Sidebar-->
+    <div id="side-form" class="sidenav side-form">
+        <form class="add-task container section">
+            <h6 id="form-header">Add to Wishlist</h6>
+            <div class="divider"></div>
+            <div class="input-field col s12">
+                <label for="title" class="black-text">Comic Title</label>
+                <input
+                placeholder="Enter Comic Title"
+                id="title"
+                class="validate"
+                type="text"
+                />
+            </div>
+            <div class>="input-field col s12">
+                <label for="description" class="black-text">Comic Description</label>
+                <input
+                    placeholder="Enter comic description"
+                    id="description"
+                    class="validate"
+                    type="text"
+                    />
+            </div>
+            <div class="input-field col s12">
+                <label for="reminder-date" class="black-text">Issue Number</label>
+                <input id="reminder-date" type="number" class="validate"/>
+            </div>
+            <div class="input-field col s12">
+                <label for="reminder-time" class="black-text">Publication Date</label>
+                <input id="reminder-time" type="date" class="validate"/>
+            </div>
+            <div class="input-field col s12">
+                <button
+                    type="button"
+                    class="btn red darken-3"
+                    onclick="getGeolocation()">
+                Add Location
+            </button>
+            <p id="location-status" class="grey-text text-darken-3">
+                Location not set
+            </p>
+        </div>
+        <input type="hidden" id="latitude"/>
+        <input type="hidden" i="longitude"/>
+
+        <input type="hidden" id="task-id"/>
+        <div class="input-field center">
+            <button
+            type="button"
+            class="btn-small red darken-3"
+            id="form-action-btn"
+            >
+            Add
+            </button>
+        </div>
+    </form>
 </div>
+</main>
 
 
+
+
+   <script type="module" src="js/auth.js"></script>
    <script src="/js/materialize.min.js"></script>
-   <script src="/js/ui.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize/min.js"></script>
-   <script>
-    const sidenav = document.querySelectorAll('.sidenav');
-    M.sidenav.init(sidenav);
-   </script>
-   <script type="module" src="/firebaseDB.js"></script>
+   <script type="module" src="/js/ui.js"></script>
+   <script type="module" src="/js/firebaseDB.js"></script>
     
 </body>
 </html>

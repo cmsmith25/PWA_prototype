@@ -1,6 +1,6 @@
 Comic Reader PWA
 
-A progressive web app prototype designed for comic book readers, with a focus on offline access and an engaging reading experience for younger audiences.
+A progressive web app prototype designed for comic book readers, exploring offline functionality, responsive design, and browser-based data storage.
 
 Technologies
 JavaScript
@@ -12,39 +12,28 @@ Materialize CSS
 HTML/CSS
 Web App Manifest
 Features
-Comic-focused home page
-Navigation for new comics, personal library, and reading suggestions
-Franchise and character pages
-Responsive design for mobile and desktop
-Offline access through service worker caching
-Cached images and application assets
-Web App Manifest for installable PWA functionality
-Firebase integration
+Comic reader-focused interface
+Navigation for new comics, a comic library, and reading suggestions
+Responsive web design
+Service worker implementation
+Offline asset caching
+Web App Manifest
 IndexedDB integration
-Progressive Web App Features
+Firebase integration
+Offline Functionality
 
-The application uses a service worker to provide offline functionality.
+The application uses a service worker to support offline access. Selected application assets, including pages and images, are cached so that previously loaded content can remain available when the application is used without an internet connection.
 
-The service worker:
+The service worker implements installation, activation, and fetch events to manage cached resources and handle network requests.
 
-Caches selected application assets
-Caches images and pages for offline use
-Handles installation and activation events
-Intercepts network requests through the fetch event
-Allows previously cached content to remain available when offline
+Progressive Web App
 
-A manifest.json file provides the information needed for the application to function as an installable web app.
+A manifest.json file is included to provide the metadata required for the application to function as a progressive web app.
+
+The project also explores browser-based storage with IndexedDB and backend services through Firebase.
 
 Project Overview
 
-This project was developed as a PWA prototype with the goal of creating a digital comic reading experience that remains accessible when an internet connection is unavailable.
+This project explores the development of a progressive web app designed around digital comic reading. The project focuses on creating an experience that can remain useful when offline while demonstrating modern browser capabilities such as service workers, caching, web app manifests, and client-side data storage.
 
-The project demonstrates experience with service workers, client-side caching, web app manifests, offline-first concepts, responsive design, and integration with browser-based storage and backend services.
-
-Future Improvements
-Add comic search functionality
-Add a custom application logo
-Expand styling and visual design
-Improve mobile navigation
-Add additional reading features
-Expand personalized comic recommendations
+The project demonstrates experience with JavaScript, responsive web development, PWA architecture, offline-first concepts, and integration with browser storage and cloud services.
